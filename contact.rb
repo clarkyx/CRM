@@ -4,8 +4,8 @@ class Contact
   attr_reader :id
   @@contacts = {}
   @@gid = 1
-
   @@functions = ['add','modify','delete','display all','search by attribute(sba)','exit']
+  #initialization
   def initialize(firstn,lastn,email,note)
     @firstn = firstn
     @lastn = lastn
@@ -18,21 +18,25 @@ class Contact
     puts "*************************"
   end
 
+  #return all the available funcationalities
   def self.allfuns
     puts "******Here are all the commands******"
     puts @@functions
     puts "*************************************"
   end
 
+  #add new contact
   def self.add(firstn,lastn,email,note)
     @@contacts[@@gid] = Contact.new(firstn,lastn,email,note)
   end
 
+  #delete contact based on id
   def self.delete(id)
     @@contacts.delete(id)
     puts "****contact successful deleted****"
   end
 
+  #display all contact information
   def self.displayall
     @@contacts.each do |id,contact|
       puts "*******#{id}*******"
@@ -44,6 +48,7 @@ class Contact
     end
   end
 
+  #display contact by using id form
   def self.display_by_id
     @@contacts.each do |id,contact|
       puts "***************"
@@ -53,6 +58,7 @@ class Contact
     end
   end
 
+  #modify current contact with the providing id name and value
   def self.modify(id,name,value)
     @@contacts.each do |i,v|
       if i == id
@@ -62,6 +68,7 @@ class Contact
     end
   end
 
+  #find the contact based on search criteria
   def self.sba(name,value)
     @@contacts.each do |id,contact|
       if (@@contacts[id].instance_variable_get('@'+name) == value)
@@ -72,6 +79,7 @@ class Contact
     end
   end
 
+  #display contact based on particular id 
   def self.display(contact)
     puts "***************"
     puts "id: #{contact.id}"

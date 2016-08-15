@@ -4,6 +4,7 @@ class CRM
   end
 
   def main_meau
+    #main_meau + excuation window
     while true
       puts "Greetings!"
       puts "please enter commands, enter li to list all available commands, enter exit to exit the program"
